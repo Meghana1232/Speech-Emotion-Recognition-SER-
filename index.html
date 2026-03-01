@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speech Emotion Recognition Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="logo">
+        <span class="logo-mark">SER</span>
+        <span class="logo-text">Speech Emotion Demo</span>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <!-- LOGIN VIEW -->
+      <section id="login-view" class="card login-card">
+        <h1 class="card-title">Welcome back</h1>
+        <p class="card-subtitle">Sign in to try the speech emotion recognition demo.</p>
+
+        <form id="login-form" class="form">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" type="password" placeholder="••••••••" required />
+          </div>
+          <button type="submit" class="btn primary-btn">Continue</button>
+          <p class="hint">For this demo, you can use any email and password.</p>
+        </form>
+      </section>
+
+      <!-- DEMO VIEW -->
+      <section id="demo-view" class="card demo-card hidden">
+        <div class="demo-header">
+          <div>
+            <h1 class="card-title">Speech Emotion Demo</h1>
+            <p class="card-subtitle">
+              Select pre-recorded voice samples from your dataset and see the predicted emotion.
+            </p>
+          </div>
+          <button id="logout-btn" class="btn ghost-btn">Log out</button>
+        </div>
+
+        <div class="demo-layout">
+          <div class="demo-left">
+            <div class="dataset-select">
+              <h2>Dataset samples</h2>
+              <p class="card-subtitle">Select a pre-recorded voice sample from your dataset to analyze.</p>
+              <div class="file-zone" id="file-zone">
+                <input type="file" id="file-input" accept="audio/*" hidden />
+                <label for="file-input" class="file-label">
+                  <span class="file-icon">🎵</span>
+                  <span>Choose audio file from dataset</span>
+                </label>
+              </div>
+              <div id="selected-file" class="selected-file hidden">
+                <span id="file-name"></span>
+                <div class="audio-actions">
+                  <button id="play-btn" class="btn ghost-btn small-btn">▶ Play</button>
+                  <button id="analyze-btn" class="btn primary-btn small-btn">Analyze</button>
+                </div>
+              </div>
+              <audio id="audio-player" controls class="audio-player"></audio>
+            </div>
+            <p id="status-text" class="status-text">Select an audio file from your dataset.</p>
+          </div>
+
+          <div class="demo-right">
+            <div class="result-card">
+              <h2>Detected Emotion</h2>
+              <p id="emotion-label" class="emotion-label">–</p>
+              <p id="confidence-label" class="confidence-label">Confidence: –</p>
+            </div>
+            <div class="history-card">
+              <div class="history-header">
+                <h3>Recent Predictions</h3>
+                <button id="clear-history-btn" class="btn ghost-btn small-btn">
+                  Clear
+                </button>
+              </div>
+              <ul id="history-list" class="history-list">
+                <!-- Filled by JS -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Hackathon Speech Emotion UI Demo</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
